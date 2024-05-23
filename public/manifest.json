@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SGIMP",
+  "name": "Sistema de Gestão de Inventário de Materiais Perigosos",
   "icons": [
     {
       "src": "favicon.ico",
