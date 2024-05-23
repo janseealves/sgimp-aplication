@@ -1,17 +1,21 @@
-import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useTheme } from "@mui/material"
+import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
+import { useDrawerContext } from "../../contexts";
 
 type Props = {
     children?: React.ReactNode;
 }
 
 export const AppMenu = ({ children }:Props) => {
-
     const theme = useTheme();
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+    const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+
 
     return (
         <>
-            <Drawer variant="permanent">
+            <Drawer open={isDrawerOpen} variant={smDown? 'temporary' : 'permanent'} onClose={toggleDrawerOpen}>
                 <Box width={theme.spacing(25)} height='100%' display='flex' flexDirection='column'>
+                    {/* Íconde do Usuário */}
                     <Box 
                         width='100%' 
                         height={theme.spacing(20)} 
@@ -19,7 +23,6 @@ export const AppMenu = ({ children }:Props) => {
                         alignItems='center' 
                         justifyContent='center'
                     >
-                        {/* Íconde do Usuário */}
                         <Avatar 
                             sx={{width: theme.spacing(10), height: theme.spacing(10)}}
                             src="logo512.png"
@@ -27,6 +30,7 @@ export const AppMenu = ({ children }:Props) => {
                     </Box>
 
                     <Divider />
+                    {/* Seleção das de páginas */}
                     <Box flex={1}>
                         <List component='nav'>
                             <ListItemButton >
@@ -40,7 +44,7 @@ export const AppMenu = ({ children }:Props) => {
                 </Box>
             </Drawer>
 
-            <Box height='100vh' marginLeft={theme.spacing(25)}>
+            <Box height='100vh' marginLeft={smDown? 0 : theme.spacing(25)}>
                 {children}
             </Box>
 
