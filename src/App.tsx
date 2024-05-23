@@ -1,6 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes";
-import { DarkTheme } from "./shared/themes";
 import { AppThemeProvider } from "./shared/contexts/ThemeContext";
 
 export const App = () => {
@@ -11,6 +10,5 @@ export const App = () => {
         <AppRoutes />
       </BrowserRouter>
     </AppThemeProvider> 
-  
   );
 };
