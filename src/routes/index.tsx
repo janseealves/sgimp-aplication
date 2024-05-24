@@ -1,10 +1,27 @@
 import { Button } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom"
 import { useDrawerContext } from "../shared/contexts";
+import { useEffect } from "react";
 
 export const AppRoutes = () => {
 
-    const { toggleDrawerOpen } = useDrawerContext();
+    const { toggleDrawerOpen, setDrawerOptions } = useDrawerContext();
+
+    // Configurações de opções de Menu
+    useEffect(() => {
+        setDrawerOptions([
+            {
+                label: 'Home',
+                icon: 'home',
+                path: '/home'
+            },
+            {
+                label: 'Inventory',
+                icon: 'inventory',
+                path: '/inventory'
+            }
+        ]);
+    }, []);
  
     return(
         // Componentes utilizados para direcionamento das páginas da aplicação
